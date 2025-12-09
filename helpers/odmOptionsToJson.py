@@ -26,7 +26,10 @@ import json
 import os
 
 def load_source(module_name, filename):
-    loader = importlib.machinery.SourceFileLoader(module_name, filename)
+    if not os.path.isfile(filename) and os.path.isfile(os.path.splitext(filename)[0] + ".pyc"):
+        loader = importlib.machinery.SourcelessFileLoader(module_name, os.path.splitext(filename)[0] + ".pyc")
+    else:
+        loader = importlib.machinery.SourceFileLoader(module_name, filename)
     module = types.ModuleType(loader.name)
     module.__file__ = filename
     loader.exec_module(module)
