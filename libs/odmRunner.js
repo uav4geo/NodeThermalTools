@@ -76,7 +76,7 @@ module.exports = {
         // Launch
         const env = utils.clone(process.env);
         env.ODM_NONINTERACTIVE = 1;
-        let childProcess = spawn(command, params, {cwd: config.odm_path, env});
+        let childProcess = spawn(command, params, {cwd: path.join(__dirname, ".."), env});
 
         childProcess
             .on('exit', (code, signal) => done(null, code, signal))

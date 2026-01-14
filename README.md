@@ -4,7 +4,6 @@ Run [Thermal Tools](https://github.com/uav4geo/Thermal-Tools) over the internet 
 
 <img width="1165" height="736" alt="image" src="https://github.com/user-attachments/assets/93c7e328-fdcf-4b5e-8e5f-e140775993d3" />
 
-
 ## Usage
 
 ```bash
@@ -13,6 +12,10 @@ docker run -ti --rm -p 3000:3000 uav4geo/nodethermaltools
 
  * Open a browser to http://localhost:3000
  * Process images
+
+## Notes
+
+This software was forked from NodeODM. Is has a lot of code that is irrelevant to the function of the software.
 
 ## Licenses
 
