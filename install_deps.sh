@@ -40,4 +40,4 @@ chmod +x $TT_BIN
 $TT_BIN --appimage-extract
 mv squashfs-root/{.,}* bin
 rm $TT_BIN
-mv AppRun Thermal_Tools.AppImage
+mv bin/AppRun $TT_BIN
