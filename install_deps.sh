@@ -22,7 +22,7 @@ nvm install $NODE_VERSION
 nvm alias default $NODE_VERSION
 
 for i in {1..20}; do
-    apt-get install -y unzip p7zip-full && npm install -g nodemon && break
+    apt-get install -y unzip p7zip-full libgtk-3-0 --no-install-recommends && npm install -g nodemon && break
     echo "apt-get failed, retrying... ($i/20)"
     sleep 30
 done
@@ -31,6 +31,13 @@ npm install --production
 
 curl -o- https://github.com/uav4geo/NodeThermalTools/releases/download/v0.0.1/Thermal_Tools.AppImage
 
-TT_BIN="$(dirname "$0")/bin/Thermal_Tools.AppImage"
-curl -L -o "$TT_BIN" https://github.com/uav4geo/NodeThermalTools/releases/download/v0.0.1/Thermal_Tools.AppImage
-chmod +x "$TT_BIN"
+
+cd $(dirname "$0")
+
+TT_BIN="bin/Thermal_Tools.AppImage"
+curl -L -o $TT_BIN https://github.com/uav4geo/NodeThermalTools/releases/download/v0.0.1/Thermal_Tools.AppImage
+chmod +x $TT_BIN
+$TT_BIN --appimage-extract
+mv squashfs-root/{.,}* bin
+rm $TT_BIN
+mv AppRun Thermal_Tools.AppImage
