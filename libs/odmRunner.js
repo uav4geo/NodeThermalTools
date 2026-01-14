@@ -30,7 +30,12 @@ module.exports = {
         assert(projectName !== undefined, "projectName must be specified");
         assert(options["project-path"] !== undefined, "project-path must be defined");
         
-        const command = path.join(config.odm_path, os.platform() === "win32" ? "run.bat" : "run.sh"),
+        options["input"] = path.join(options["project-path"], projectName, "images");
+        options["output"] = path.join(options["project-path"], projectName, "converted")
+        
+        delete options["project-path"];
+        
+        const command = path.join(__dirname, "..", "bin", "Thermal_Tools.AppImage"),
               params = [];
 
         for (var name in options){
@@ -46,8 +51,6 @@ module.exports = {
                 params.push(value);
             }
         }
-
-        params.push(projectName);
 
         logger.info(`About to run: ${command} ${params.join(" ")}`);
 
@@ -86,17 +89,19 @@ module.exports = {
     },
     
     getVersion: function(done){
-        fs.readFile(path.join(config.odm_path, 'VERSION'), {encoding: 'utf8'}, (err, content) => {
-            if (err) done(null, "?");
-            else done(null, content.split("\n").map(l => l.trim())[0]);
-        });
+        // fs.readFile(path.join(config.odm_path, 'VERSION'), {encoding: 'utf8'}, (err, content) => {
+        //     if (err) done(null, "?");
+        //     else done(null, content.split("\n").map(l => l.trim())[0]);
+        // });
+        done("1.3.0");
     },
 
     getEngine: function(done){
-        fs.readFile(path.join(config.odm_path, 'ENGINE'), {encoding: 'utf8'}, (err, content) => {
-            if (err) done(null, "odm"); // Assumed
-            else done(null, content.split("\n").map(l => l.trim())[0]);
-        });
+        // fs.readFile(path.join(config.odm_path, 'ENGINE'), {encoding: 'utf8'}, (err, content) => {
+        //     if (err) done(null, "odm"); // Assumed
+        //     else done(null, content.split("\n").map(l => l.trim())[0]);
+        // });
+        done("ThermalTools");
     },
 
     getJsonOptions: function(done){

@@ -441,22 +441,8 @@ module.exports = class Task{
             }
 
             // All paths are relative to the project directory (./data/<uuid>/)
-            let allPaths = ['odm_orthophoto/odm_orthophoto.tif',
-                              'odm_orthophoto/odm_orthophoto.tfw',
-                              'odm_orthophoto/odm_orthophoto.png',
-                              'odm_orthophoto/odm_orthophoto.wld',
-                              'odm_orthophoto/odm_orthophoto.mbtiles',
-                              'odm_orthophoto/odm_orthophoto.kmz',
-                              'odm_orthophoto/odm_orthophoto_extent.dxf',
-                              'odm_orthophoto/cutline.gpkg',
-                              'odm_georeferencing', 'odm_texturing',
-                              'odm_dem/dsm.tif', 'odm_dem/dtm.tif', 'dsm_tiles', 'dtm_tiles',
-                              'odm_dem/dsm.euclideand.tif', 'odm_dem/dtm.euclideand.tif',
-                              'orthophoto_tiles', 'potree_pointcloud', 'entwine_pointcloud',
-                              '3d_tiles',
-                              'images.json', 'cameras.json',
-                              'task_output.txt', 'log.json',
-                              'odm_report'];
+            let allPaths = ['converted',
+                            'task_output.txt'];
 
             // Did the user request different outputs than the default?
             if (this.outputs.length > 0) allPaths = this.outputs;
@@ -500,9 +486,9 @@ module.exports = class Task{
             // of outputs without post processing steps (build EPT).
             // We're leaving it here only for Linux/docker setups, but will not
             // be triggered on Windows.
-            if (os.platform() !== "win32" && !this.skipPostProcessing){
-                tasks.push(runPostProcessingScript());
-            }
+            // if (os.platform() !== "win32" && !this.skipPostProcessing){
+            //     tasks.push(runPostProcessingScript());
+            // }
 
             const taskOutputFile = path.join(this.getProjectFolderPath(), 'task_output.txt');
             tasks.push(saveTaskOutput(taskOutputFile));
@@ -671,6 +657,9 @@ module.exports = class Task{
     // Reads the contents of the tasks's
     // images.json and returns its JSON representation
     readImagesDatabase(callback){
+        callback(null, []); // TODO: implement?
+        return;
+
         const imagesDbPath = !config.test ?
                              path.join(this.getProjectFolderPath(), 'images.json') :
                              path.join('tests', 'processing_results', 'images.json');
