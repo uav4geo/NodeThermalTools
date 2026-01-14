@@ -1,7 +1,7 @@
 {
-  "name": "NodeODM",
-  "version": "2.2.4",
-  "description": "REST API to access ODM",
+  "name": "NodeThermalsTools",
+  "version": "1.0.0",
+  "description": "REST API to access ThermalTools",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,17 +9,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/OpenDroneMap/NodeODM.git"
+    "url": "git+https://github.com/uav4geo/NodeThermalTools.git"
   },
   "keywords": [
-    "opendronemap"
+    "thermaltools"
   ],
   "author": "Piero Toffanin",
   "license": "AGPL-3.0",
   "bugs": {
-    "url": "https://github.com/OpenDroneMap/NodeODM/issues"
+    "url": "https://github.com/uav4geo/NodeThermalTools/issues"
   },
-  "homepage": "https://github.com/OpenDroneMap/NodeODM#readme",
+  "homepage": "https://github.com/uav4geo/NodeThermalTools#readme",
   "dependencies": {
     "archiver": "^3.0.0",
     "async": "^2.6.1",
