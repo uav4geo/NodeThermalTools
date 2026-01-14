@@ -28,3 +28,9 @@ for i in {1..20}; do
 done
 
 npm install --production
+
+curl -o- https://github.com/uav4geo/NodeThermalTools/releases/download/v0.0.1/Thermal_Tools.AppImage
+
+TT_BIN="$(dirname "$0")/bin/Thermal_Tools.AppImage"
+curl -L -o "$TT_BIN" https://github.com/uav4geo/NodeThermalTools/releases/download/v0.0.1/Thermal_Tools.AppImage
+chmod +x "$TT_BIN"
