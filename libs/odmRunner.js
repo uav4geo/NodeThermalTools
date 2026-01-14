@@ -123,45 +123,17 @@ module.exports = {
         }
 
         const getOdmOptions = (pythonExe, done) => {
-            // Launch
-            const env = utils.clone(process.env);
-            env.ODM_OPTIONS_TMP_FILE = utils.tmpPath(".json");
-            env.ODM_PATH = config.odm_path;
-            const shQuote = s =>  {
-                s = s.replace(/"/g, "")
-                return `"${s}"`;
-            }
-
-            let childProcess = spawn(pythonExe, [shQuote(path.join(__dirname, "..", "helpers", "odmOptionsToJson.py")),
-                    "--project-path", shQuote(config.odm_path), "bogusname"], { env, shell: true });
-    
-            // Cleanup on done
-            let handleResult = (err, result) => {
-                fs.exists(env.ODM_OPTIONS_TMP_FILE, exists => {
-                    if (exists) fs.unlink(env.ODM_OPTIONS_TMP_FILE, err => {
-                        if (err) console.warning(`Cannot cleanup ${env.ODM_OPTIONS_TMP_FILE}`);
-                    });
-                });
-    
-                // Don't wait
-                done(err, result);
-            };
-    
-            childProcess
-                .on('exit', (code, signal) => {
-                    try{
-                        fs.readFile(env.ODM_OPTIONS_TMP_FILE, { encoding: "utf8" }, (err, data) => {
-                            if (err) handleResult(new Error(`Cannot read list of options from ODM (from temporary file). Is ODM installed in ${config.odm_path}?`));
-                            else{
-                                let json = JSON.parse(data);
-                                handleResult(null, json);
-                            }
-                        });
-                    }catch(err){
-                        handleResult(new Error(`Could not load list of options from ODM. Is ODM installed in ${config.odm_path}? Make sure that OpenDroneMap is installed and that --odm_path is set properly: ${err.message}`));
+            try{
+                fs.readFile(path.join(__dirname, "..", "options.json"), { encoding: "utf8" }, (err, data) => {
+                    if (err) done(new Error(`Cannot read list of options`));
+                    else{
+                        let json = JSON.parse(data);
+                        done(null, json);
                     }
-                })
-                .on('error', handleResult);
+                });
+            }catch(err){
+                done(new Error(`Could not load list of options from ODM. Is ODM installed in ${config.odm_path}? Make sure that OpenDroneMap is installed and that --odm_path is set properly: ${err.message}`));
+            }
         }
         
         if (os.platform() === "win32"){

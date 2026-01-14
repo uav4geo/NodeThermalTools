@@ -56,7 +56,7 @@
                 <form enctype="multipart/form-data" onsubmit="return false;">
                     <div id="app">
                         <div id="imagesInput" class="form-group" data-bind="visible: mode() === 'file'">
-                            <div id="images">Images and GCP File (optional):</div> <button id="btnSelectFiles" class="btn btn-default btn-sm" data-bind="attr: {disabled: uploading()}">Add Files...</button>
+                            <div id="images">DJI Thermal Images:</div> <button id="btnSelectFiles" class="btn btn-default btn-sm" data-bind="attr: {disabled: uploading()}">Add Files...</button>
                             <div data-bind="visible: filesCount() && !uploading()">Selected files: <span data-bind="text: filesCount()"></span></div>
                             <div data-bind="visible: uploading()" class="progress" style="margin-top: 12px;">
                                 <div class="progress-bar progress-bar-success" role="progressbar" data-bind="text: uploadedFiles() + ' / ' + filesCount() + ' files', style: {width: uploadedPercentage()}">
@@ -91,15 +91,15 @@
                             <button style="position: relative; top: -45px;" type="submit" class="btn btn-default" data-bind="visible: !error(), click: function(){ showOptions(!showOptions()); }, text: (showOptions() ? 'Hide' : 'Show') + ' Options'"></button>
 
                             <div data-bind="visible: showOptions()">
-                                <div>
-                                    <label for="taskName">Project Name:</lable> 
+                                <!--<div>
+                                     <label for="taskName">Project Name:</lable> 
                                     <br/>
                                     <input type="text" class="form-control" value="" id="taskName" />
                                     <button type="submit" class="btn glyphicon glyphicon-info-sign btn-info" data-toggle="tooltip" data-placement="top" title="Assign a name to the project." ></button>
                                     <button id="resetTaskName" type="submit" class="btn glyphicon glyphicon glyphicon-repeat btn-default" data-toggle="tooltip" data-placement="top" title="Reset to default"  ></button>
-                                    <br/><br/>
+                                    <br/><br/> -->
 
-                                    <label for="doPostProcessing">generate 2D and potree point cloud tiles:</label>
+                                    <!-- <label for="doPostProcessing">generate 2D and potree point cloud tiles:</label>
                                     <br/>
 
                                     
@@ -111,7 +111,7 @@
                                     <button type="submit" class="btn glyphicon glyphicon-info-sign btn-info" data-toggle="tooltip" data-placement="top" title="Generate 2D and Potree Point Cloud Tiles" ></button>
                                     <button id="resetDoPostProcessing" type="submit" class="btn glyphicon glyphicon glyphicon-repeat btn-default" data-toggle="tooltip" data-placement="top" title="Reset to default"  ></button>
                                     
-                                    <br/><br/>
+                                    <br/><br/> 
                                     
                                 </div>
 
@@ -122,7 +122,7 @@
                                     <button type="submit" class="btn glyphicon glyphicon-info-sign btn-info" data-toggle="tooltip" data-placement="top" title="Optional webhook" ></button>
                                     <button id="resetWebhook" type="submit" class="btn glyphicon glyphicon glyphicon-repeat btn-default" data-toggle="tooltip" data-placement="top" title="Reset to default"  ></button>
                                     <br/><br/>
-                                </div>
+                                </div>-->
 
                                 <div data-bind="foreach: options">
                                     <label data-bind="text: properties.name + (properties.domain ? ' (' + properties.domain + ')' : '')"></label><br/>

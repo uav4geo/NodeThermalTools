@@ -1,0 +1,37 @@
+{
+   "--distance": {
+    "metavar": "<integer: 1 <= x <= 25>",
+    "action": "<class 'config.StoreValue'>",
+    "type": "<class 'int'>",
+    "default": "5",
+    "help": "Distance (m). Default: %(default)s"
+  },
+  "--humidity": {
+    "metavar": "<integer: 20 <= x <= 100>",
+    "action": "<class 'config.StoreValue'>",
+    "type": "<class 'int'>",
+    "default": "70",
+    "help": "Humidity (%). Default: %(default)s"
+  },
+  "--emissivity": {
+    "metavar": "<float: 0.1 <= x <= 1>",
+    "action": "<class 'config.StoreValue'>",
+    "type": "<class 'float'>",
+    "default": "1.0",
+    "help": "Emissivity. Default: %(default)s"
+  },
+  "--ambient-temperature": {
+    "metavar": "<float: -40 <= x <= 80>",
+    "action": "<class 'config.StoreValue'>",
+    "type": "<class 'float'>",
+    "default": "25.0",
+    "help": "Ambient Temperature (degrees C). Default: %(default)s"
+  },
+  "--reflected-temperature": {
+    "metavar": "<float: -40 <= x <= 80>",
+    "action": "<class 'config.StoreValue'>",
+    "type": "<class 'float'>",
+    "default": "23.0",
+    "help": "Reflected Temperature (degrees C). Default: %(default)s"
+  }
+}

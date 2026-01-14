@@ -64,9 +64,10 @@ $(function() {
 
         // Start upload
         var formData = new FormData();
-        formData.append("name", $("#taskName").val());
-        formData.append("webhook", $("#webhook").val());
-        formData.append("skipPostProcessing", !$("#doPostProcessing").prop('checked'));
+        // formData.append("name", $("#taskName").val());
+        formData.append("name", "");
+        // formData.append("webhook", $("#webhook").val());
+        // formData.append("skipPostProcessing", !$("#doPostProcessing").prop('checked'));
         formData.append("options", JSON.stringify(optionsModel.getUserOptions()));
         // formData.append("outputs", JSON.stringify(['odm_orthophoto/odm_orthophoto.tif']));
 
