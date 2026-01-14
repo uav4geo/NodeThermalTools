@@ -32,11 +32,11 @@ module.exports = {
         
         options["input"] = path.join(options["project-path"], projectName, "images");
         options["output"] = path.join(options["project-path"], projectName, "converted")
-        
+
         delete options["project-path"];
         
-        const command = path.join(__dirname, "..", "bin", "Thermal_Tools.AppImage"),
-              params = [];
+        const command = "xvfb-run";
+        let params = [path.join(__dirname, "..", "bin", "Thermal_Tools.AppImage")];
 
         for (var name in options){
             let value = options[name];

@@ -22,7 +22,7 @@ nvm install $NODE_VERSION
 nvm alias default $NODE_VERSION
 
 for i in {1..20}; do
-    apt-get install -y unzip p7zip-full libgtk-3-0 --no-install-recommends && npm install -g nodemon && break
+    apt-get install -y unzip p7zip-full libgtk-3-0 xvfb libegl1 libgomp1 --no-install-recommends && npm install -g nodemon && break
     echo "apt-get failed, retrying... ($i/20)"
     sleep 30
 done
