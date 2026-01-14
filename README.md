@@ -2,7 +2,8 @@
 
 Run [Thermal Tools](https://github.com/uav4geo/Thermal-Tools) over the internet via a REST API. [PyODM](https://pyodm.readthedocs.io/en/latest/) compatible.
 
-<img width="1173" height="736" alt="image" src="https://github.com/user-attachments/assets/abaa2bc4-bd9f-4517-ac4a-eb655e1b0b91" />
+<img width="1165" height="736" alt="image" src="https://github.com/user-attachments/assets/93c7e328-fdcf-4b5e-8e5f-e140775993d3" />
+
 
 ## Usage
 
